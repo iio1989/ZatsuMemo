@@ -1,0 +1,15 @@
+.new__memo__form{
+    margin:30px;
+    margin-top: 80px;
+}
+.new__memo__save__btn{
+    width:100%;
+    padding:10px;
+    font-size:30px;
+}
+
+.memo__edit__modal{
+    max-width: inherit;
+    /* width: 98%; */
+    margin-left: 15px;
+}

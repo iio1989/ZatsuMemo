@@ -1,7 +1,8 @@
 <?php
 
-include('../cmn/cmnUtils.php');
-include('../cmn/DB.php');
+include('../cmn/util/cmnUtils.php');
+include('../cmn/util/DB.php');
+include('../user/userDao.php');
 
 error_reporting(E_ALL & ~ E_DEPRECATED & ~ E_USER_DEPRECATED & ~ E_NOTICE);
   
@@ -9,57 +10,39 @@ error_reporting(E_ALL & ~ E_DEPRECATED & ~ E_USER_DEPRECATED & ~ E_NOTICE);
 $password = getParam_checkExists('user_password');
 /** @var httpParam 入力ユーザーID */
 $user_id = getParam_checkExists('user_id');
+/** @var userInfo ユーザー情報 */
+$login_user = selectUser($user_id);
 
-// 未入力チェック
+
 $errs = array();
-if (checkPass($user_id, $password)) {
-    $errs['user_password'] = "パスワードもしくは、IDが合っていません。";
+
+if (!$login_user) { // ユーザー存在チェック
+    $errs['login_error'] = "ユーザー情報が存在しません。";
+}
+
+if (!password_verify($password, $login_user["user_pass"])) {
+    $errs['login_error'] = "パスワードもしくは、IDが合っていません。";
 } else { // ログインOKパターン
     session_start();
     $_SESSION['user_password'] = $password;
-    $_SESSION['user_id'] = $user_id;
-    header("Location: ../memo/memoList.php", true, 303);
+    $_SESSION['login_user'] = $login_user;
+    header("Location: ../memo/memoListPage.php", true, 303);
     exit();
 }
-
-/**
- * パスワードチェックを行います。
- *
- * @param integer $user_id
- * @param string $password
- * @return boolean true or false
- */
-function checkPass($user_id, $password)
-{
-    try {
-        // SQL作成
-        $sql = "SELECT * FROM user WHERE show_id = :show_id";
-        $stmt = getBaseSTMT($sql);
-        $stmt->bindValue(':show_id', $user_id, PDO::PARAM_STR);
-        $stmt->execute();
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (password_verify($password, $data["user_pass"])) {
-            return false;
-        } else {
-            return true;
-        }
-    } catch (PDOException $e) {
-        print $e->getMessage();
-        die();
-        return false;
-    }
-}
 ?>
+
 <html>
 <head><meta charset="UTF-8"></head>
 <body>
     <h1>メモ画面遷移失敗</h1>
-<?php if (isset($errs['password'])) { ?>
-    <div><?php echo $errs['password']; ?></div>
+<?php if (isset($errs['login_error'])) { ?>
+    <div><?php echo $errs['login_error']; ?></div>
 <?php } else { ?>
     <div>エラーなし</div>
 <?php } ?>
     <p>Id：<?php echo $userl_id;?></p>
     <p>PassWord：<?php echo $password; ?></p>
+    <div><a href="loginPage.php">ログイン画面へ移動する</a></div>
+    <div><a href="../user/addUserPage.php">ユーザー新規登録画面へ移動する</a></div>
 </body>
 </html>

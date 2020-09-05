@@ -1,6 +1,6 @@
 <?php
 
-include('../cmn/DB.php');
+require_once('../cmn/util/DB.php');
 
 /**
  * ブランクチェックを行います。
@@ -28,8 +28,12 @@ function checkBlunk($post_param)
  * @param string $new_title
  * @return true or false
  */
-function saveNewMemo($user_id, $new_memo, $new_title)
+function saveNewMemo($user_id)
 {
+    // 新規登録関連 パラメータ
+    $new_memo = getParam_checkExists('new_memo');
+    $new_title = getParam_checkExists('new_title');
+
     if (checkBlunk($new_memo)) {
         return;
     }
@@ -56,8 +60,10 @@ function saveNewMemo($user_id, $new_memo, $new_title)
  * @param integer $del_memoId
  * @return true or false
  */
-function delMemo($del_memoId)
+function delMemo()
 {
+    // 削除登録関連 パラメータ
+    $del_memoId = getParam_checkExists('del_memoId');
     if (checkBlunk($del_memoId)) {
         return;
     }
@@ -84,8 +90,15 @@ function delMemo($del_memoId)
  * @param string $update_memo
  * @return true or false
  */
-function updateMemo($user_id, $update_memoId, $update_title, $update_memo)
+function updateMemo()
 {
+
+    // 更新登録関連 パラメータ
+    $user_id = $_SESSION['user_id'];
+    $update_memoId = getParam_checkExists('update_memoId');
+    $update_title = getParam_checkExists('update_title');
+    $update_memo = getParam_checkExists('update_memo');
+
     if (checkBlunk($update_memoId)) {
         return;
     }
