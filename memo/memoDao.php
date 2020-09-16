@@ -1,24 +1,7 @@
 <?php
 
 require_once('../cmn/util/DB.php');
-
-/**
- * ブランクチェックを行います。
- *
- * @param var $post_param
- * @return true or false
- */
-function checkBlunk($post_param)
-{
-    if ($post_param === null) {
-        return true;
-    } elseif ($post_param === "") {
-        echo "メモ内容が未入力です。"; // TODO:別途バリデーションチェックを実装します。
-        return true;
-    } else {
-        return false;
-    }
-}
+require_once('memoUtils.php');
 
 /**
  * メモ新規登録
@@ -31,8 +14,8 @@ function checkBlunk($post_param)
 function saveNewMemo($user_id)
 {
     // 新規登録関連 パラメータ
-    $new_memo = getParam_checkExists('new_memo');
-    $new_title = getParam_checkExists('new_title');
+    $new_title = getParam_checkExists('memoTitle');
+    $new_memo = getParam_checkExists('memoBody');
 
     if (checkBlunk($new_memo)) {
         return;
@@ -63,7 +46,7 @@ function saveNewMemo($user_id)
 function delMemo()
 {
     // 削除登録関連 パラメータ
-    $del_memoId = getParam_checkExists('del_memoId');
+    $del_memoId = getParam_checkExists('delMemoId');
     if (checkBlunk($del_memoId)) {
         return;
     }
@@ -94,10 +77,9 @@ function updateMemo()
 {
 
     // 更新登録関連 パラメータ
-    $user_id = $_SESSION['user_id'];
     $update_memoId = getParam_checkExists('update_memoId');
-    $update_title = getParam_checkExists('update_title');
-    $update_memo = getParam_checkExists('update_memo');
+    $update_title = getParam_checkExists('memoTitle');
+    $update_memo = getParam_checkExists('memoBody');
 
     if (checkBlunk($update_memoId)) {
         return;
@@ -106,7 +88,6 @@ function updateMemo()
         // SQL作成
         $sql = "UPDATE memo SET memo_body='".$update_memo."', memo_title='".$update_title."' WHERE id=".$update_memoId.";";
         $stmt = getBaseSTMT($sql);
-        $stmt->bindValue(':create_user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindValue(':id', $update_memoId, PDO::PARAM_INT);
         $stmt->bindValue(':memo_body', $update_memo, PDO::PARAM_STR);
         $stmt->bindValue(':memo_title', $update_title, PDO::PARAM_STR);
@@ -125,7 +106,7 @@ function updateMemo()
  * @param integer $user_id
  * @return void
  */
-function getMemo($user_id)
+function getMemoList($user_id)
 {
     try {
         // SQL作成
@@ -134,6 +115,49 @@ function getMemo($user_id)
         $stmt->bindValue(':create_user_id', $user_id, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print $e->getMessage();
+        die();
+        return false;
+    }
+}
+
+function getMemoListBySearch($user_id, $perfectMatch, $targetText)
+{
+    try {
+        // SQL作成
+        $sql = "SELECT * FROM memo WHERE create_user_id = :create_user_id AND ( memo_body LIKE :memo_body OR memo_title LIKE :memo_title ) order by id desc;";
+        if ($perfectMatch === null || $perfectMatch === 0) {
+            $targetText = "%".$targetText."%";
+        }
+        $stmt = getBaseSTMT($sql);
+        $stmt->bindValue(':create_user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':memo_body', $targetText, PDO::PARAM_STR);
+        $stmt->bindValue(':memo_title', $targetText, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print $e->getMessage();
+        die();
+        return false;
+    }
+}
+
+/**
+ * メモ取得
+ *
+ * @param integer $memo_id
+ * @return void
+ */
+function getMemo($memo_id)
+{
+    try {
+        // SQL作成
+        $sql = "SELECT * FROM memo WHERE id = :id;"; // show_id email LIMIT 1;
+        $stmt = getBaseSTMT($sql);
+        $stmt->bindValue(':id', $memo_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         print $e->getMessage();
         die();

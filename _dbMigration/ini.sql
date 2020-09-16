@@ -2,6 +2,7 @@ CREATE TABLE `memo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `memo_title` text,
   `memo_body` text NOT NULL,
+  `category` int(11) DEFAULT NULL,  
   `create_user_id` int(11) DEFAULT NULL,
   `update_user_id` int(11) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,

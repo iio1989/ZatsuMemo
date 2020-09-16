@@ -1,3 +1,6 @@
+<?php
+include('../cmn/util/csrfUtils.php');
+?>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -16,6 +19,7 @@
     <form action="login.php" method="POST" class="form-group" style="width:400px;margin-top: 30px;">
       <input type="text" class="form-control" name="user_id" placeholder="ID" style="margin-top: 10px;">
       <input type="password" class="form-control" name="user_password" placeholder="PassWord" style="margin-top: 10px;">
+      <input type="hidden" name="csrf_token" value="<?php print setCsrfToken();?>">
       <input type="submit" class="btn btn-success" value="ログイン" style="margin-top: 10px;width:100%;">
     </form>
     <form>

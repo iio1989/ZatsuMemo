@@ -17,11 +17,6 @@ $login_user_id = $login_user["id"];
 $login_user_name = $login_user["user_name"];
 
 
-if (isset($_POST["user_id"])) {
-    csvExport(getMemo($_POST["user_id"]));
-}
-
-
 ?>
 
 <html>
