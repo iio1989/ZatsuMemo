@@ -12,8 +12,8 @@ function getBaseSTMT($sql)
     $config = parse_ini_file($path, false);
 
     $dsn = $config['dsn'];
-    $user = $config['user'];
-    $pass = $config['pass'];
+    $user = $config['db_user'];
+    $pass = $config['db_pass'];
 
     $dbh = new PDO($dsn, $user, $pass);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
