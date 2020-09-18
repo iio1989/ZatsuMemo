@@ -11,15 +11,18 @@ if (isset($_COOKIE["PHPSESSID"])) {
 session_destroy();
 
 ?>
+
 <html>
-<head>
+  <head>
     <meta charset="UTF-8">
-</head>
-<body>
-    <h1>ログアウトページ</h1>
-    <div>ログアウトしました。</div>
-    <div><?php echo $errs['user_password']; ?></div>
-    <div>エラーなし</div>
-    <a href="loginPage.php">ログインpege</a>
-</body>
+    <?php include('../cmn/headerTag.php'); ?>
+  </head>
+  <body>
+    <div class="login__main__div">
+      <div>&nbsp;
+		    <h1><img src="../cmn/image/zatsu_kanji_1.png" alt="LOGO">&nbsp;<span>ログアウト</span></h1>
+	    </div>
+      <div class="logOut__login__link"><a href="loginView.php">ログインはこちらから</a></div>
+    </div>
+  </body>
 </html>

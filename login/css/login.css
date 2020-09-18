@@ -1,0 +1,25 @@
+.login__main__div{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 400px;
+  margin-top: 80px;
+}
+
+.login__form{
+  width:400px;
+  margin-top: 30px;
+}
+
+.login__form__input{
+  margin-top: 10px;
+}
+
+.login__submit__btn{
+  margin-top: 10px;
+  width:100%;
+}
+
+.logOut__login__link{
+  margin-top: 50px;
+}
