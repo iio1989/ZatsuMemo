@@ -1,0 +1,50 @@
+.new__memo__form{
+    margin:30px;
+    margin-top: 80px;
+}
+
+.new__memo__save__btn{
+    width:100%;
+    padding:10px;
+    font-size:30px;
+}
+
+.memo__edit__modal{
+    max-width: inherit;
+    margin-left: 15px;
+}
+
+.memoList__leftFrame{
+    padding-top: 70px;
+    display: flex;
+}
+
+.memoList__leftFrame__option{
+    width:400px;
+    height:55px;
+    display: flex;
+    float: right;
+    padding-left: 15px;
+}
+
+.memoList__leftFrame__btn{
+    padding-right: 5px;
+    padding-top: 5px;
+    cursor:pointer;
+}
+
+.memoList__leftFrame__card{
+    cursor:pointer;
+    padding-top:1;
+    max-height:120px;
+}
+
+.memo__form{
+    padding-left: 30px;
+    width:70%;
+}
+
+.memo__form__editor{
+    height: 70vh;
+    overflow-y: auto;
+}

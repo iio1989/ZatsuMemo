@@ -28,7 +28,7 @@ if (!password_verify($password, $login_user["password"])) { // パスワードNG
     $_SESSION['user_password'] = $password;
     $_SESSION['login_user'] = $login_user;
     $_SESSION['csrf_token'] = $_POST['csrf_token'];
-    header("Location: ../memo/memoListPage.php", true, 303);
+    header("Location: ../memo/memoListView.php", true, 303);
     exit();
 }
 ?>

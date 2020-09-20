@@ -16,7 +16,7 @@ if (isset($_SESSION['page_title'])) {
     <div class="dropdown dropleft">
       <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">メニュー</button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="../memo/memoListPage.php">メモリスト</a>
+        <a class="dropdown-item" href="../memo/memoListView.php">メモリスト</a>
         <a class="dropdown-item" href="../user/userAccountPage.php">アカウント</a>
         <a class="dropdown-item" href="../settings/settingsPage.php">設定</a>
         <a class="dropdown-item" href="../special/specialPage.php">追加コンテンツ</a>
