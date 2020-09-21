@@ -21,7 +21,7 @@ if (isset($_SESSION['page_title'])) {
         <a class="dropdown-item" href="../settings/settingsPage.php">設定</a>
         <a class="dropdown-item" href="../special/specialPage.php">追加コンテンツ</a>
         <a class="dropdown-item" href="../about/aboutPage.php">ざつメモについて</a>
-        <a class="dropdown-item" href="../login/logOut.php">ログアウト</a>
+        <a class="dropdown-item" href="../login/logOutView.php">ログアウト</a>
       </div>
     </div>
   </div>
