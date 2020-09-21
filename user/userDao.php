@@ -48,17 +48,18 @@ function selectUserByShowId($show_id)
  * ユーザーを新規追加します。
  *
  * @param integer $user_id ユーザーID
+ * @param string $user_name ユーザー名
  * @param string $password パスワード
  * @return void
  */
-function addUser($user_id, $password)
+function addUser($user_id, $user_name, $password)
 {
     $password = password_hash($password, PASSWORD_DEFAULT);
     try {
         $sql = "INSERT INTO user (show_id, name, password) VALUE (:show_id, :name, :password)";
         $stmt = getBaseSTMT($sql);
         $stmt->bindValue(':show_id', $user_id, PDO::PARAM_STR);
-        $stmt->bindValue(':name', "hogename", PDO::PARAM_STR);
+        $stmt->bindValue(':name', $user_name, PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
         $stmt->execute();
     } catch (PDOException $e) {

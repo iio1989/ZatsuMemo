@@ -1,18 +1,37 @@
 <?php
 
-include('userEntity.php');
+include('../cmn/util/cmnUtils.php');
+include('../cmn/util/csrfUtils.php');
+include('userDao.php');
 
 error_reporting(E_ALL & ~ E_DEPRECATED & ~ E_USER_DEPRECATED & ~ E_NOTICE);
 
-$newUserId = $_POST['newUser_id'];
-$password = $_POST['newUser_password'];
+session_start();
+checkCsrTokenWhenLogin(getParam_checkExists('csrf_token')); // csrfチェック
 
-// パスワード復元
-$password = password_hash($password, PASSWORD_DEFAULT);
+$newUserId = getParam_checkExists('newUser_id');
+$password = getParam_checkExists('newUser_password');
+$newUserName = getParam_checkExists('newUser_name');
+if ($newUserName === "") {
+    $newUserName = "名無し";
+}
 
-// ユーザー追加処理実行
-addUser($newUserId, $password);
-
+/** @var array エラー情報 */
+$errs = array();
+if ($newUserId === "" || $password === "") { // ユーザー存在チェック
+    $errs['addUser_error'] = "ID or パスワード が未入力です。";
+} else {
+    if (selectUserByShowId($newUserId)) {
+        $errs['addUser_error'] = "入力されたIDは既に存在するため、ユーザーを作成できませんでした。別のIDを入力してください。";
+    } else {
+        // ユーザー追加処理実行
+        addUser($newUserId, $newUserName, $password);
+        $_SESSION['login_user'] = selectUserByShowId($newUserId);
+        $_SESSION['csrf_token'] = $_POST['csrf_token'];
+        header("Location: ../memo/memoListView.php", true, 303);
+        exit();
+    }
+}
 ?>
 
 <html>
@@ -20,12 +39,13 @@ addUser($newUserId, $password);
   <meta charset="UTF-8">
 </head>
 <body>
-  <h1>ユーザー登録が完了しました。</h1>
-  <p>Id：<?php echo $newUserId;?>
-  </p>
-  <p>PassWord：<?php echo $password;?>
-  </p>
-  <a href="addUserPage.php">新規登録画面に戻る</a>
-  <a href="../login/loginPage.php">ログイン画面に移動する</a>
+  <h1>エラー発生</h1>
+<?php if (isset($errs['addUser_error'])) { ?>
+  <p><?php echo $errs['addUser_error'] ?></p>  
+<?php } else {?>
+  <p>エラーが発生し、ユーザー登録を行えませんでした。</p>
+<?php }?>
+  <div><a href="addUserView.php">新規登録画面に戻る</a></div>
+  <div><a href="../login/loginView.php">ログイン画面に移動する</a></div>
 </body>
 </html>

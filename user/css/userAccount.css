@@ -5,3 +5,25 @@
     width:650px;
     margin-top: 80px;
 }
+
+.user__account__add{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 400px;
+    margin-top: 80px;
+}
+
+.user__account__add__input{
+    margin-top: 10px;
+  }
+  
+.user__account__add__btn{
+    margin-top: 10px;
+    width:100%;
+}
+
+.user__account__add__submit{
+    margin-top: 10px;
+    width:100%;
+  }

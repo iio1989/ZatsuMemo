@@ -26,6 +26,9 @@ include('../cmn/util/csrfUtils.php');
       <form>
         <input type="submit" class="btn btn-info login__submit__btn" value="お試しログイン">
       </form>
+      <form action="../user/addUserView.php" method="POST" class="form-group">
+        <input type="submit" class="btn btn-primary login__submit__btn" value="ユーザー作成 & ログイン">
+      </form>
     </div>
   </body>
 </html>
