@@ -1,6 +1,10 @@
 <?php
-
 require_once('../cmn/util/DB.php');
+
+/** ユーザータイプ 普通 */
+define("USER_TYPE_NORMAL", 10);
+/** ユーザータイプ お試し */
+define("USER_TYPE_TRIAL", 20);
 
 /**
  * ユーザー情報を取得します。
@@ -47,20 +51,22 @@ function selectUserByShowId($show_id)
 /**
  * ユーザーを新規追加します。
  *
- * @param integer $user_id ユーザーID
+ * @param integer $show_id 表示用ユーザーID
  * @param string $user_name ユーザー名
  * @param string $password パスワード
+ * @param integer $user_type ユーザータイプ
  * @return void
  */
-function addUser($user_id, $user_name, $password)
+function addUser($show_id, $user_name, $password, $user_type)
 {
     $password = password_hash($password, PASSWORD_DEFAULT);
     try {
-        $sql = "INSERT INTO user (show_id, name, password) VALUE (:show_id, :name, :password)";
+        $sql = "INSERT INTO user (show_id, name, password, type) VALUE (:show_id, :name, :password, :type)";
         $stmt = getBaseSTMT($sql);
-        $stmt->bindValue(':show_id', $user_id, PDO::PARAM_STR);
+        $stmt->bindValue(':show_id', $show_id, PDO::PARAM_STR);
         $stmt->bindValue(':name', $user_name, PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $stmt->bindValue(':type', $user_type, PDO::PARAM_INT);
         $stmt->execute();
     } catch (PDOException $e) {
         print $e->getMessage();

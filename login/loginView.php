@@ -23,8 +23,9 @@ include('../cmn/util/csrfUtils.php');
         <input type="hidden" name="csrf_token" value="<?php print setCsrfToken();?>">
         <input type="submit" class="btn btn-success login__submit__btn" value="ログイン">
       </form>
-      <form>
+      <form action="trialLogin.php" method="POST">
         <input type="submit" class="btn btn-info login__submit__btn" value="お試しログイン">
+        <input type="hidden" name="csrf_token" value="<?php print setCsrfToken();?>">
       </form>
       <form action="../user/addUserView.php" method="POST" class="form-group">
         <input type="submit" class="btn btn-primary login__submit__btn" value="ユーザー作成 & ログイン">

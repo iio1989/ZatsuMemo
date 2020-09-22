@@ -25,7 +25,7 @@ if ($newUserId === "" || $password === "") { // ユーザー存在チェック
         $errs['addUser_error'] = "入力されたIDは既に存在するため、ユーザーを作成できませんでした。別のIDを入力してください。";
     } else {
         // ユーザー追加処理実行
-        addUser($newUserId, $newUserName, $password);
+        addUser($newUserId, $newUserName, $password, USER_TYPE_NORMAL);
         $_SESSION['login_user'] = selectUserByShowId($newUserId);
         $_SESSION['csrf_token'] = $_POST['csrf_token'];
         header("Location: ../memo/memoListView.php", true, 303);
