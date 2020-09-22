@@ -26,6 +26,7 @@ CREATE TABLE `user` (
   `show_id` varchar(45) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `type` int(2) DEFAULT NULL,
   `create_user_id` int(11) DEFAULT NULL,
   `update_user_id` int(11) DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
