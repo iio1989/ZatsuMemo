@@ -33,7 +33,7 @@ if (isset($_POST["user_id"])) {
         <form action="specialView.php" method="post">
           <label>メモ全量text出力</label>
           <div>
-            <input type="hidden" name="user_id" value="<?php print $login_user_id; ?>">
+            <input type="hidden" name="user_id" value="<?php echo $login_user_id; ?>">
             <input type="submit" class="btn btn-primary" value="出力" style="width: 100%;">
           </div>
         </form>

@@ -76,13 +76,13 @@ if (isset($_POST["memoModalSearchText"])) { // メモ検索実行時
     <div class="memo__form">
       <form class="form-group" action="memoListView.php" method="post">
         <div class="form-group">
-          <input type="text" class="modal_memo_title form-control" name="memoTitle" value="<?php print $selectMemo["title"]; ?>" placeholder="タイトル">
+          <input type="text" class="modal_memo_title form-control" name="memoTitle" value="<?php echo issetConvertHsc($selectMemo, "title"); ?>" placeholder="タイトル">
         </div>
         <div class="form-group">
-          <input id="memoBodyId" type="hidden" name="memoBody" value="<?php print $selectMemo["body"]; ?>">
+          <input id="memoBodyId" type="hidden" name="memoBody" value="<?php echo issetConvertHsc($selectMemo, "body"); ?>">
           <trix-editor input="memoBodyId" class="col-12 form-control memo__form__editor" name="memoBody" placeholder="メモ本文"></trix-editor>
         </div>
-        <input type="hidden" id="update_memoId" class="memo_card_param modal_memo_update_id" name="update_memoId" value="<?php print $selectMemo["id"]; ?>">
+        <input type="hidden" id="update_memoId" class="memo_card_param modal_memo_update_id" name="update_memoId" value="<?php echo issetConvertHsc($selectMemo, "id"); ?>">
       <?php if ($selectMemo !== "") { ?>
         <input type="submit" class="btn btn-success col-12" name="updateMemo" value="更新">
       <?php } else {  ?>

@@ -42,8 +42,8 @@ if (!password_verify($password, $login_user["password"])) { // パスワードNG
 <?php } else { ?>
     <div>エラーなし</div>
 <?php } ?>
-    <p>Id：<?php echo $user_id;?></p>
-    <p>PassWord：<?php echo $password; ?></p>
+    <p>Id：<?php echo hsc($user_id);?></p>
+    <p>PassWord：<?php echo hsc($password); ?></p>
     <div><a href="loginView.php">ログイン画面へ移動する</a></div>
     <div><a href="../user/addUserView.php">ユーザー新規登録画面へ移動する</a></div>
   </body>

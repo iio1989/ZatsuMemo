@@ -34,8 +34,8 @@ if (isset($_POST["new_user_show_id"])) {
     <?php include('../cmn/header.php'); ?>
     <div class="user__account__form">
       <form class="form__id__name" method="post">
-        <div>ユーザーID：<input type="text" class="form-control" name="new_user_show_id" placeholder="ユーザーID" value="<?php echo $login_user["show_id"]; ?>"></div>
-        <div>ユーザー名：<input type="text" class="form-control" name="new_user_name" placeholder="ユーザー名" value="<?php echo $login_user["name"]; ?>"></div>
+        <div>ユーザーID：<input type="text" class="form-control" name="new_user_show_id" placeholder="ユーザーID" value="<?php echo issetConvertHsc($login_user, "show_id");?>"></div>
+        <div>ユーザー名：<input type="text" class="form-control" name="new_user_name" placeholder="ユーザー名" value="<?php echo issetConvertHsc($login_user, "name");?>"></div>
         <input type="submit" class="btn btn-primary" value="更新" style="width: 100%;">
       </form>
       <form class="form__pass" method="post">

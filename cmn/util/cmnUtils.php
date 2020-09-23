@@ -33,15 +33,15 @@ function getSessionParam_checkExists($sessionName)
 }
 
 /**
- * 変数がセットされているか確認します。
+ * 引数に対してエスケープ処理を行います。
  *
- * @param string $paramName パラメータ名
- * @return パラメータ or ブランク
+ * @param string $targetStr
+ * @return エスケープ処理済みの引数
  */
-function checkIsset($paramName)
+function issetConvertHsc($targetStr, $setKey)
 {
-    if (!isset($paramName)) {
-        return $paramName;
+    if (isset($targetStr[$setKey])) {
+        return htmlspecialchars($targetStr[$setKey], ENT_QUOTES, "UTF-8");
     } else {
         return "";
     }
@@ -50,7 +50,7 @@ function checkIsset($paramName)
 /**
  * 引数に対してエスケープ処理を行います。
  *
- * @param string $targetStr
+ * @param string $targetStr 対象
  * @return エスケープ処理済みの引数
  */
 function hsc($targetStr)
