@@ -1,5 +1,5 @@
 <?php
-include('../cmn/util/csrfUtils.php');
+require_once('../cmn/util/includeCmnUtils.php');
 ?>
 <html>
   <head>

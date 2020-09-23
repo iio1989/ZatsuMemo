@@ -1,4 +1,7 @@
 <?php
+
+require_once('../cmn/util/includeCmnUtils.php');
+
 // セッション開始
 session_start();
 // セッション変数を全て削除
