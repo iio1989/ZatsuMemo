@@ -57,3 +57,14 @@ function hsc($targetStr)
 {
     return htmlspecialchars($targetStr, ENT_QUOTES, "UTF-8");
 }
+
+/**
+ * 現在日時を取得します。
+ *
+ * @return DateTime 現在日時 format('Y-m-d H:i:s')
+ */
+function getNowDateTime()
+{
+    $time = new DateTime();
+    return $time->format('Y-m-d H:i:s');
+}

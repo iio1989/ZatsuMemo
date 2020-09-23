@@ -1,6 +1,7 @@
 <?php
 
 require_once('../cmn/util/DB.php');
+require_once('../cmn/util/cmnUtils.php');
 require_once('memoUtils.php');
 
 /**
@@ -16,12 +17,15 @@ function saveNewMemo($user_id, $new_title, $new_memo)
     if (checkBlunk($new_memo)) {
         return false;
     }
+
     try {
-        $sql = "insert into memo (create_user_id, body, title) values (:create_user_id, :body, :title);";
+        $sql = "insert into memo (create_user_id, body, title, create_date, update_date) values (:create_user_id, :body, :title, :create_date, :update_date);";
         $stmt = getBaseSTMT($sql);
         $stmt->bindValue(':create_user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindValue(':body', $new_memo, PDO::PARAM_STR);
         $stmt->bindValue(':title', $new_title, PDO::PARAM_STR);
+        $stmt->bindValue(':create_date', getNowDateTime(), PDO::PARAM_STR);
+        $stmt->bindValue(':update_date', getNowDateTime(), PDO::PARAM_STR);
         $stmt->execute();
         return true;
     } catch (PDOException $e) {
@@ -46,12 +50,13 @@ function updateMemo($user_id, $update_memoId, $update_title, $update_memo)
         return false;
     }
     try {
-        $sql = "UPDATE memo SET body='".$update_memo."', title='".$update_title."', update_user_id='".$user_id."' WHERE id=".$update_memoId.";";
+        $sql = "UPDATE memo SET body='".$update_memo."', title='".$update_title."', update_user_id='".$user_id."', update_date='".getNowDateTime()."' WHERE id=".$update_memoId.";";
         $stmt = getBaseSTMT($sql);
         $stmt->bindValue(':id', $update_memoId, PDO::PARAM_INT);
         $stmt->bindValue(':body', $update_memo, PDO::PARAM_STR);
         $stmt->bindValue(':title', $update_title, PDO::PARAM_STR);
         $stmt->bindValue(':update_user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':update_date', getNowDateTime(), PDO::PARAM_STR);
         $stmt->execute();
         return true;
     } catch (PDOException $e) {

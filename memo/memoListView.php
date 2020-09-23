@@ -1,8 +1,8 @@
 <?php
 
-include('memoDao.php');
-include('../cmn/util/cmnUtils.php');
-include('../cmn/util/csrfUtils.php');
+require_once('memoDao.php');
+require_once('../cmn/util/cmnUtils.php');
+require_once('../cmn/util/csrfUtils.php');
 
 session_start();
 $_SESSION['page_title'] = "メモリスト"; // ページヘッダ文字列設定用
