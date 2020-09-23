@@ -16,7 +16,7 @@ session_destroy();
   <head>
     <meta charset="UTF-8">
     <?php include('../cmn/headerTag.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css?<?php echo getVersion();?>">
   </head>
   <body>
     <div class="login__main__div">

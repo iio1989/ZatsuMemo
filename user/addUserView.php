@@ -5,7 +5,7 @@ include('../cmn/util/csrfUtils.php');
   <head>
     <meta charset="UTF-8">
     <?php include('../cmn/headerTag.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/userAccount.css">
+    <link rel="stylesheet" type="text/css" href="css/userAccount.css?<?php echo getVersion();?>">
   </head>
   <body>
     <div class="user__account__add">

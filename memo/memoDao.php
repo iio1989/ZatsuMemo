@@ -1,7 +1,6 @@
 <?php
 
-require_once('../cmn/util/DB.php');
-require_once('../cmn/util/cmnUtils.php');
+require_once('../cmn/util/includeCmnUtils.php');
 require_once('memoUtils.php');
 
 /**

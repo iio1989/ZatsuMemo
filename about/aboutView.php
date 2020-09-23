@@ -1,28 +1,29 @@
 <?php
 
+require_once('../cmn/util/includeCmnUtils.php');
+
 // session
 session_start();
 $_SESSION['page_title'] = "ざつメモについて";
 
-/** @var httpSession ログインユーザー情報 */
-$login_user = $_SESSION['login_user'];
-$login_user_id = $login_user["id"];
-$login_user_name = $login_user["name"];
-
 ?>
 
 <html>
-<head>
-    <meta charset="UTF-8">
-    <?php include('../cmn/headerTag.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/special.css">
-</head>
-<body>
-    <?php include('../cmn/header.php'); ?>    
-    <div>
-      <div>作成中</div>
-      <div class="text-center"><a href="../memo/memoListView.php">メモリスト画面へ移動する</a></div>
+ <head>
+  <meta charset="UTF-8">
+  <?php include('../cmn/headerTag.php'); ?>
+  <link rel="stylesheet" type="text/css" href="css/about.css?<?php echo getVersion();?>">
+ </head>
+ <body>
+  <?php include('../cmn/header.php'); ?>    
+  <div class="about_main">
+    <div class="card">
+      <div class="card-body">
+        <label>バージョン：<?php echo getVersion(); ?></label>
+      </div>
     </div>
-    <?php include('../cmn/bodyUnderCmn.php'); ?>
+    <div class="text-center"><a href="../memo/memoListView.php">メモリスト画面へ移動する</a></div>
+  </div>
+  <?php include('../cmn/bodyUnderCmn.php'); ?>
 </body>
 </html>

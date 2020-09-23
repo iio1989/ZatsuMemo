@@ -1,7 +1,6 @@
 <?php
 
-include('../cmn/util/cmnUtils.php');
-include('../cmn/util/csrfUtils.php');
+require_once('../cmn/util/includeCmnUtils.php');
 include('../user/userDao.php');
 
 /** ユーザータイプ お試し */

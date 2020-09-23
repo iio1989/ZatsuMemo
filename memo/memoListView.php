@@ -1,8 +1,7 @@
 <?php
 
+require_once('../cmn/util/includeCmnUtils.php');
 require_once('memoDao.php');
-require_once('../cmn/util/cmnUtils.php');
-require_once('../cmn/util/csrfUtils.php');
 
 session_start();
 $_SESSION['page_title'] = "メモリスト"; // ページヘッダ文字列設定用
@@ -49,9 +48,9 @@ if (isset($_POST["memoModalSearchText"])) { // メモ検索実行時
 <head>
   <meta charset="UTF-8">
   <?php include('../cmn/headerTag.php'); ?>
-  <link rel="stylesheet" type="text/css" href="css/memo.css">
-  <link rel="stylesheet" type="text/css" href="../cmn/lib/trix-editor/trix.css">
-  <script type="text/javascript" src="../cmn/lib/trix-editor/trix.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/memo.css?<?php echo getVersion();?>">
+  <link rel="stylesheet" type="text/css" href="../cmn/lib/trix-editor/trix.css?<?php echo getVersion();?>">
+  <script type="text/javascript" src="../cmn/lib/trix-editor/trix.js?<?php echo getVersion();?>"></script>
 </head>
 <body>
   <!-- ヘッダー -->
@@ -94,6 +93,6 @@ if (isset($_POST["memoModalSearchText"])) { // メモ検索実行時
 <?php include('parts/memoSearchModal.php'); ?>
 <?php include('../cmn/bodyUnderCmn.php'); ?>
 <!-- 機能専用JS -->
-<script type="text/javascript" src="js/memoSearchModal.js"></script>
+<script type="text/javascript" src="js/memoSearchModal.js?<?php echo getVersion();?>"></script>
 </body>
 </html>

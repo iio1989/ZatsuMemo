@@ -1,7 +1,7 @@
 <?php
 
+require_once('../cmn/util/includeCmnUtils.php');
 include('../user/userDao.php');
-include('../cmn/util/cmnUtils.php');
 
 session_start();
 $_SESSION['page_title'] = "アカウント";
@@ -28,7 +28,7 @@ if (isset($_POST["new_user_show_id"])) {
   <head>
     <meta charset="UTF-8">
     <?php include('../cmn/headerTag.php'); ?>
-    <link rel="stylesheet" type="text/css" href="css/userAccount.css">
+    <link rel="stylesheet" type="text/css" href="css/userAccount.css?<?php echo getVersion();?>">
   </head>
   <body>
     <?php include('../cmn/header.php'); ?>

@@ -1,7 +1,6 @@
 <?php
 
-include('../cmn/util/cmnUtils.php');
-include('../cmn/util/csrfUtils.php');
+require_once('../cmn/util/includeCmnUtils.php');
 include('userDao.php');
 
 error_reporting(E_ALL & ~ E_DEPRECATED & ~ E_USER_DEPRECATED & ~ E_NOTICE);

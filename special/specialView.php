@@ -1,8 +1,7 @@
 <?php
 
+require_once('../cmn/util/includeCmnUtils.php');
 include('../user/userDao.php');
-include('../cmn/util/cmnUtils.php');
-
 include('../memo/memoDao.php');
 include('export/userMemoExport.php');
 
@@ -22,7 +21,7 @@ if (isset($_POST["user_id"])) {
  <head>
   <meta charset="UTF-8">
   <?php include('../cmn/headerTag.php'); ?>
-  <link rel="stylesheet" type="text/css" href="css/special.css">
+  <link rel="stylesheet" type="text/css" href="css/special.css?<?php echo getVersion();?>">
  </head>
  <body>
   <?php include('../cmn/header.php'); ?>    
