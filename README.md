@@ -15,6 +15,8 @@ PHP 7.3.11
 
 bootstrap4.0
 
+Trix 1.2.4
+
 ## License
 This program is Free.
 However, this repository contains some OSS libraries.
