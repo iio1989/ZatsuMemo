@@ -8,7 +8,7 @@
  */
 function getBaseSTMT($sql)
 {
-    $path = "../cmn/conf/db.ini";
+    $path = "../../conf/db.ini";
     $config = parse_ini_file($path, false);
 
     $dsn = $config['dsn'];
