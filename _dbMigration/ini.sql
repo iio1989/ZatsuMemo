@@ -1,13 +1,13 @@
 /************************************************
 * ZatsuMemo. DB migration.
-* version : 0.0.0
-* update : 2020/09/17
+* version : 1.0.0
+* update : 2020/10/14
 ************************************************/
 
 /** メモテーブル **/
 CREATE TABLE `memo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` text,
+  `title` text DEFAULT NULL,
   `body` text NOT NULL,
   `category` int(11) DEFAULT NULL,  
   `create_user_id` int(11) DEFAULT NULL,
