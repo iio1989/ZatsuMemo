@@ -3,11 +3,11 @@
 
 Zatsumemoは、PHPを使用したサイト構築の技術を検証するために作成しました。
 
-Zatsu Memoは、オープンソースのWYSIWYGエディターを使用して実装され、一般的なメモアプリの機能を備えています。
+ZatsuMemoは、オープンソースのWYSIWYGエディターを使用して実装され、一般的なメモアプリの機能を備えています。
 
 Zatsumemo was created to verify the technology of site construction using PHP.
 
-Zatsu Memo is implemented using the open source WYSIWYG editor and has the functions of a general memo app.
+ZatsuMemo is implemented using the open source WYSIWYG editor and has the functions of a general memo app.
 
 ## DEMO
 デモサイト：https://zatsumemo.net
