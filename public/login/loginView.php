@@ -22,12 +22,15 @@
         <input type="submit" class="btn btn-success login__submit__btn" value="ログイン">
       </form>
       <form action="trialLogin.php" method="POST">
-        <input type="submit" class="btn btn-info login__submit__btn" value="お試しログイン">
+        <input type="submit" class="btn btn-info login__submit__btn" value="お試しログイン" data-html="true"
+         data-toggle="tooltip" data-placement="right" title="アカウント作成なしで、 <br /> お試しで機能を利用する場合、 <br /> こちらのボタンをクリックして下さい。">
         <input type="hidden" name="csrf_token" value="<?php echo setCsrfToken();?>">
       </form>
       <form action="../user/addUserView.php" method="POST" class="form-group">
         <input type="submit" class="btn btn-primary login__submit__btn" value="ユーザー作成 & ログイン">
       </form>
     </div>
+    <?php include('../cmn/bodyUnderCmn.php'); ?>
+    <script type="text/javascript" src="js/login.js?<?php echo getVersion();?>"></script>
   </body>
 </html>
