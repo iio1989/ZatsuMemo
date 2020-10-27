@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light fixed-top">
   <div style="display: flex;">
-    <img src="../cmn/image/zatsu_kanji_1.png" width="40" height="40" class="d-inline-block align-top" alt="">
+    <img src="../cmn/image/zatsu_kanji_6.png" width="40" height="40" class="d-inline-block align-top" alt="">
     <div class="navbar-brand">&nbsp;<?php echo getSessionParam_checkExists('page_title'); ?></div>
   </div>
   <div style="display: flex;">
