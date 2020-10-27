@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../public/cmn/lib/bootstrap-4.5.0-dist/css/bootstrap.min.css?<?php echo getVersionIndexPage();?>">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' <?php echo $_SERVER['HTTP_HOST'];?>; img-src 'self' data: <?php echo $_SERVER['HTTP_HOST'];?>;">
     <link rel="stylesheet" type="text/css" href="../public/login/css/login.css?<?php echo getVersionIndexPage();?>">
+    <link rel="shortcut icon" href="../cmn/image/favicon.ico?<?php echo getVersion();?>">
   </head>
   <body>
     <div class="login__main__div">

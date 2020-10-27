@@ -20,6 +20,10 @@
   width:100%;
 }
 
+.tooltip-inner {
+  max-width: 100%;
+}
+
 .logOut__login__link{
   margin-top: 50px;
 }
